@@ -10,9 +10,9 @@ let gigModel = mongoose.Schema(
     time: String,
     duration: Number,
     price: Number
-    },
+    }, 
     {
         collection:"gigs"
     }
 );
-module.exports=mongoose.model('Gig',gigModel);
+module.exports=mongoose.model('gig',gigModel);

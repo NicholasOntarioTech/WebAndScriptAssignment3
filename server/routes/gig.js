@@ -81,38 +81,64 @@ router.post('/add',async(req,res,next)=>{
         })
     }
 })
+
 // Get route for displaying the Edit Page - Update Operation
-router.get('/edit',async(req,res,next)=>{
-    try{
-        res.render('Gigs/edit',{
-            title:'Edit a Gig'
-        })
+router.get('/edit/:id',async(req,res,next)=>{
+    try
+    {
+        const id = req.params.id;
+        const gigToEdit = await Gig.findById(id);
+        res.render("Gigs/edit",
+            {
+                title:"Edit Gig",
+                gig: gigToEdit
+            }
+        )
     }
     catch(err)
     {
-        console.error(err);
-        res.render('Gigs/edit',{
-            error:'Error on server'
-        })
+        console.log(err);
+        next(err);
     }
 })
 // Post route for processing the Edit Page - Update Operation
-router.post('/edit',async(req,res,next)=>{
-
-})
-// Get route for performing delete operation - Delete Operation
-router.get('/delete',async(req,res,next)=>{
-    try{
-        res.render('Gigs/delete',{
-            title:'Delete a Gig'
+router.post('/edit/:id',async(req,res,next)=>{
+    try
+    {
+        let id = req.params.id;
+        let updateGig = Gig({
+            "_id":id,
+            "performer":req.body.performer,
+            "description":req.body.description,
+            "date":req.body.date,
+            "time":req.body.time,
+            "duration":req.body.duration,
+            "price":req.body.price
+        })
+        Gig.findByIdAndUpdate(id,updateGig).then(()=>{
+            res.redirect("/gigs")
         })
     }
     catch(err)
     {
-        console.error(err);
-        res.render('Gigs/delete',{
-            error:'Error on server'
-        })
+        console.log(err);
+        next(err);
     }
 })
+// Get route for performing delete operation - Delete Operation
+router.get('/delete/:id',async(req,res,next)=>{
+    try
+    {
+        let id = req.params.id;
+        Gig.deleteOne({_id:id}).then(()=>{
+            res.redirect("/gigs")
+        })
+    }
+    catch(err)
+    {
+        console.log(err);
+        next(err);
+    }
+})
+
 module.exports = router;

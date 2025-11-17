@@ -1,12 +1,69 @@
 <%-include ../partials/header.ejs %>
 <%-include ../partials/main_nav.ejs %>
-<a href="../home">HOME</a><br>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %> page</p>
-            <a href="/Gigs/list">List gigs</a><br>
-            <a href="/Gigs/add">Add a gig</a><br>
-            <a href="/Gigs/edit">Edit a gig</a><br>
-            <a href="/Gigs/delete">Delete a gig</a>
+
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <h1><%= title %></h1>
+
+            <form class="form" method="post">
+                <div class="form-group">
+                    <label for="performerTextField">Performer(s)</label>
+                    <input type="text" class="form-control"
+                    id="performerTextField"
+                    placeholder="Enter the name of the performer(s)"
+                    name="performer" required>
+                </div>
+                <div class="form-group">
+                    <label for="descriptionTextField">Description</label>
+                    <textarea type="text" class="form-control"
+                    id="descriptionTextField"
+                    placeholder="Enter a short description of the gig"
+                    name="description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="dateTextField">Date</label>
+                    <input type="text" class="form-control"
+                    id="dateTextField"
+                    placeholder="Enter the date of the gig"
+                    name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="timeTextField">Time</label>
+                    <input type="text" class="form-control"
+                    id="timeTextField"
+                    placeholder="Enter the time of the gig"
+                    name="time" required>
+                </div>
+                <div class="form-group">
+                    <label for="durationTextField">Duration (min)</label>
+                    <input type="text" class="form-control"
+                    id="durationTextField"
+                    placeholder="Enter the length of the show (minutes)"
+                    name="duration" required></input>
+                </div>
+                <div class="form-group">
+                    <label for="priceTextField">Ticket Price</label>
+                    <input type="text" class="form-control"
+                    id="priceTextField"
+                    placeholder="Enter the ticket price"
+                    name="price" required>
+                </div>
+                <br>
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i> Submit
+                </button>
+                <a href="/gigs" class="btn btn-warning">
+                    <i class="fas fa-undo"></i> Cancel
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+<%-include ../partials/footer.ejs %>
+
 
 
 

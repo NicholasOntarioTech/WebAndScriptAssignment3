@@ -1,18 +1,14 @@
 <%-include ../partials/header.ejs %>
 <%-include ../partials/main_nav.ejs %>
-    <a href="../home">HOME</a><br>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %> page</p>
-            <a href="/Gigs/list">List gigs</a><br>
-            <a href="/Gigs/add">Add a gig</a><br>
-            <a href="/Gigs/edit">Edit a gig</a><br>
-            <a href="/Gigs/delete">Delete a gig</a>
+    <p>Welcome to <%= title %> page <br> <a href="/Gigs/add" class="btn btn-primary">Add a gig</a> </p>
 
 <!--Main content for displaying my database-->
 <main class="container">
+    <br>
     <div class="row">
-        <div class="offset-md-1 col-md-10">
-            <table class="table table-bordered table-striped table-hover">
+        <div class="offset-md-1 col-md-9">
+            <table class="table table-striped table-hover">
                 <!--Header Row-->
                 <tr class="d-flex">
                     <th class="text-center col-2">Performer</th>
@@ -20,17 +16,22 @@
                     <th class="text-center col-2">Show Date</th>
                     <th class="text-center col-1">Show Time</th>
                     <th class="text-center col-1">Show Duration</th>
-                    <th class="text-center col-2">Ticket Price</th>
+                    <th class="text-center col-1">Ticket Price</th>
+                    <th class="text-center col-2">Edit</th>
+                    <th class="text-center col-2">Delete</th>
                 </tr>
                 <!--for/while loop-->
                 <% for(let count=0; count<GigList.length;count++) { %>
                     <tr class="d-flex">
-                        <td class="text-center col-2"><%= GigList[count].name %></td>
-                        <td class="text-center col-2"><%= GigList[count].author %></td>
-                        <td class="text-center col-1"><%= GigList[count].published %></td>
+                        <td class="text-center col-2"><%= GigList[count].performer %></td>
                         <td class="text-center col-4"><%= GigList[count].description %></td>
-                        <td class="text-center col-1"><%= GigList[count].price %></td>
-                        <td class="text-center col-1"><%= GigList[count].price %></td>
+                        <td class="text-center col-2"><%= GigList[count].date %></td>
+                        <td class="text-center col-1"><%= GigList[count].time %></td>
+                        <td class="text-center col-1"><%= GigList[count].duration %> min</td>
+                        <td class="text-center col-1">$<%= GigList[count].price %></td>
+                        <td class="text-center col-2"><a href="/Gigs/edit/<%=GigList[count]._id%>" class="btn btn-warning">Edit</a></td>
+                        <td class="text-center col-2"><a href="/Gigs/delete/<%=GigList[count]._id%>" class="btn btn-danger" onclick="return confirm('Delete entry for <%= GigList[count].performer %>?')">Delete</a></td>
+                        
                     </tr>
                 <% } %>
             </table>
