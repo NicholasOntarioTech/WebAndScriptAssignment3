@@ -8,8 +8,10 @@ let DB = require('./db');
 
 var indexRouter = require('../routes/index');
 var usersRouter = require('../routes/users');
-let gigsRouter = require('../routes/gig')
+let gigsRouter = require('../routes/gig');
 var app = express();
+
+require('dotenv').config();
 
 // Test DB Connection
 mongoose.connect(DB.URI);
