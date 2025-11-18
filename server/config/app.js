@@ -1,16 +1,17 @@
+//Establish requirements
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 let mongoose = require('mongoose');
+require('dotenv').config();
 
+// Establish routes
 var indexRouter = require('../routes/index');
 var usersRouter = require('../routes/users');
 let gigsRouter = require('../routes/gig');
 var app = express();
-
-require('dotenv').config();
 
 // Test DB Connection
 mongoose.connect(process.env.URI);

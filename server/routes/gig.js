@@ -4,6 +4,7 @@ let mongoose = require('mongoose');
 let Gig = require('../models/gig');
 
 // Get route for the read gig list - Read Operation
+//Route if URL is Gigs/
 router.get('/',async(req,res,next)=>{
     try
     {
@@ -23,6 +24,7 @@ router.get('/',async(req,res,next)=>{
     }
 })
 
+//Also route to the gig list page if url is Gigs/list
 router.get('/list',async(req,res,next)=>{
     try
     {
@@ -60,8 +62,8 @@ router.get('/add',async(req,res,next)=>{
 // Post route for processing the Add Page - Create Operation
 router.post('/add',async(req,res,next)=>{
     try
-    {
-        let newGig = Gig({
+    { 
+        let newGig = Gig({ //When making a new gig, all these variables must be taken in. 
             "performer":req.body.performer,
             "description":req.body.description,
             "date":req.body.date,
@@ -106,7 +108,7 @@ router.post('/edit/:id',async(req,res,next)=>{
     try
     {
         let id = req.params.id;
-        let updateGig = Gig({
+        let updateGig = Gig({ //When editing a gig, all these variables must be taken in
             "_id":id,
             "performer":req.body.performer,
             "description":req.body.description,

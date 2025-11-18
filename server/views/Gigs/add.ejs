@@ -1,8 +1,6 @@
 <%-include ../partials/header.ejs %>
 <%-include ../partials/main_nav.ejs %>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %> page</p>
-
+<!--This is the form for adding a new gig to the database-->
 <div class="container">
     <div class="row">
         <div class="offset-md-3 col-md-6">
@@ -10,64 +8,56 @@
 
             <form class="form" method="post">
                 <div class="form-group">
-                    <label for="performerTextField">Performer(s)</label>
+                    <label for="performerTextField">Performer(s)</label> <!--Take in the performer variable-->
                     <input type="text" class="form-control"
                     id="performerTextField"
                     placeholder="Enter the name of the performer(s)"
                     name="performer" required>
                 </div>
                 <div class="form-group">
-                    <label for="descriptionTextField">Description</label>
+                    <label for="descriptionTextField">Description</label> <!--Take in the description variable-->
                     <textarea type="text" class="form-control"
                     id="descriptionTextField"
                     placeholder="Enter a short description of the gig"
-                    name="description" required></textarea>
+                    name="description" required></textarea> <!--Unlike the other variables, this one takes the form of a text box, for larger entries-->
                 </div>
                 <div class="form-group">
-                    <label for="dateTextField">Date</label>
+                    <label for="dateTextField">Date</label> <!--Take in the date variable-->
                     <input type="text" class="form-control"
                     id="dateTextField"
                     placeholder="Enter the date of the gig"
                     name="date" required>
                 </div>
                 <div class="form-group">
-                    <label for="timeTextField">Time</label>
+                    <label for="timeTextField">Time</label> <!--Take in the time variable-->
                     <input type="text" class="form-control"
                     id="timeTextField"
                     placeholder="Enter the time of the gig"
                     name="time" required>
                 </div>
                 <div class="form-group">
-                    <label for="durationTextField">Duration (min)</label>
+                    <label for="durationTextField">Duration (min)</label> <!--Take in the duration variable-->
                     <input type="text" class="form-control"
                     id="durationTextField"
                     placeholder="Enter the length of the show (minutes)"
                     name="duration" required></input>
                 </div>
                 <div class="form-group">
-                    <label for="priceTextField">Ticket Price</label>
+                    <label for="priceTextField">Ticket Price</label> <!--Take in the ticket price variable-->
                     <input type="text" class="form-control"
                     id="priceTextField"
                     placeholder="Enter the ticket price"
                     name="price" required>
                 </div>
                 <br>
-                <button class="btn btn-primary" type="submit">
+                <button class="btn btn-primary" type="submit"> <!--Submit the form, add object to database-->
                     <i class="fas fa-edit"></i> Submit
                 </button>
-                <a href="/gigs" class="btn btn-warning">
+                <a href="/gigs" class="btn btn-warning"> <!--When you click cancel, you are taken back to the gig list-->
                     <i class="fas fa-undo"></i> Cancel
                 </a>
             </form>
         </div>
     </div>
 </div>
-<%-include ../partials/footer.ejs %>
-
-
-
-
-
-
-            
 <%-include ../partials/footer.ejs %>
