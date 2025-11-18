@@ -14,7 +14,7 @@ var app = express();
 require('dotenv').config();
 
 // Test DB Connection
-mongoose.connect(DB.URI);
+mongoose.connect(process.env.URI);
 let mongoDB = mongoose.connection;
 mongoDB.on('error',console.error.bind(console,'Connection error'));
 mongoDB.once('open',()=>{
